@@ -14,7 +14,7 @@ public class Monster {
         this.nameMonster = nameMonster;
         this.damage = damage;
         this.intelligence = intelligence;
-        this.life = 200;
+        this.life = 40;
         this.element = element;
     }
 
