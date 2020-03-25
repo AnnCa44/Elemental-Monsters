@@ -74,9 +74,9 @@ public class Arena {
                 }
                 
             }
-                if (monsterPlayer.getLife() <= 0) {
-                    break;
-                }
+            if (monsterPlayer.getLife() <= 0) {
+                break;
+            }
         }
         System.out.println(monsterPlayer.getNameMonster() + " has won " + count + "/3 battles" );
     }
@@ -113,7 +113,5 @@ public class Arena {
         int number = random.nextInt(4) + 1;
         return number;
     }
-
-
 
 }

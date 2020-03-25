@@ -77,33 +77,28 @@ public class Monster {
     //attack (va attaquer l'adversaire)
     public void attack(Monster opponent){
         System.out.println(this.nameMonster + " attack!!!");
-        if( this.getElement().equals("fire") && opponent.getElement().equals("air")  ){
-            opponent.setLife(opponent.getLife() - ((this.damage + 1) * 2));
+
+        
+        int currentDamage = this.damage + 1;
+        if (this.getElement().equals("fire") && opponent.getElement().equals("air")
+            || this.getElement().equals("air") && opponent.getElement().equals("water")
+            || this.getElement().equals("water") && opponent.getElement().equals("fire")
+        ) {
+            currentDamage *= 2; // currentDamage = currentDamage * 2;
+        } else if (this.getElement().equals("air") && opponent.getElement().equals("fire")
+            || this.getElement().equals("water") && opponent.getElement().equals("air")
+            || this.getElement().equals("fire") && opponent.getElement().equals("water")
+        ) {
+            currentDamage /= 2; // currentDamage = currentDamage / 2;
         }
-        else if ( this.getElement().equals("air") && opponent.getElement().equals("water")) {
-            opponent.setLife(opponent.getLife() - ((this.damage + 1) * 2));
-        }
-        else if ( this.getElement().equals("water") && opponent.getElement().equals("fire")) {
-            opponent.setLife(opponent.getLife() - ((this.damage + 1) * 2));
-        } 
-        else if( this.getElement().equals("air") && opponent.getElement().equals("fire")  ){
-            opponent.setLife(opponent.getLife() - ((this.damage + 1) / 2));
-        }
-        else if ( this.getElement().equals("water") && opponent.getElement().equals("air")) {
-            opponent.setLife(opponent.getLife() - ((this.damage + 1) / 2));
-        }
-        else if ( this.getElement().equals("fire") && opponent.getElement().equals("water")) {
-            opponent.setLife(opponent.getLife() - ((this.damage + 1) / 2));
-        } 
-        else {
-            opponent.setLife(opponent.getLife() - (this.damage + 1));
-        }
+        opponent.setLife(opponent.getLife() - currentDamage);
+        
 
         if( opponent.getLife() > 0) {
             System.out.println(opponent.getNameMonster() + " has " + opponent.getLife() + " points remaning. \n");
         } else {
             System.out.println(opponent.getNameMonster() + " is KO!");
-        }
+        } 
     }
 
     
